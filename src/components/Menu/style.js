@@ -5,11 +5,16 @@ export const MenuContainer = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-
 `
 export const StaticMenu = styled.div`
   display: flex;
   position: right;
+  @media (max-width: 425px) {
+    display: none;
+  } ;
+  @media (max-width: 768px) {
+    display: none;
+  } ;
 `
 
 export const MenuItem = styled.a`
@@ -19,8 +24,8 @@ export const MenuItem = styled.a`
   font-weight: bold;
   color: #ffff;
   cursor: pointer;
-  &:hover{
-      color: tomato;
+  &:hover {
+    color: tomato;
   }
 `
 export const MenuLogo = styled.a`

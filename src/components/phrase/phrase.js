@@ -29,6 +29,11 @@ const MainPhrase = styled.span`
   font-family: "Satisfy", cursive;
   color: #ffff;
   flex-direction: column;
+  @media (max-width: 768px){
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+  };
 `
 
 export default function phrase() {

@@ -15,6 +15,7 @@ export const CoupleImage = styled.div`
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-size: cover;
 `
 
@@ -31,6 +32,12 @@ export const MasterTitle = styled.span`
   font-weight: 700;
   color: #ffff;
   letter-spacing: 11px;
+  @media (max-width: 425px) {
+    font-size: 42px;
+  } ;
+  @media (max-width: 320px) {
+    font-size: 32px;
+  } ;
 `
 export const Line = styled.h1`
   background-color: #ffff;

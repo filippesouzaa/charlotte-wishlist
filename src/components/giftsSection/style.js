@@ -3,6 +3,10 @@ import styled from "styled-components"
 export const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  } ;
 `
 export const GiftPhotos = styled.div`
   background-color: red;
@@ -12,11 +16,17 @@ export const GiftPhotos = styled.div`
   -moz-background-size: 100% 100% !important;
   -o-background-size: 100% 100% !important;
   background-size: 100% !important;
+  @media (max-width: 768px) {
+    width: 100%;
+  } ;
 `
 
 export const GiftDescription = styled.div`
   width: 50%;
   height: 600px;
+  @media (max-width: 768px) {
+    width: 100%;
+  } ;
 `
 
 export const GiftTitle = styled.span`
