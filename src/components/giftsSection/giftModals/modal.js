@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 
 const ModalContent = styled.div`
@@ -13,8 +13,6 @@ const ModalContent = styled.div`
 const ModalGiftPhoto = styled.img`
   width: 50%;
   height: 350px;
-
-  background-color: #f9f9f9 !important;
   border: 0 !important;
   text-decoration: none;
   @media (max-width: 768px) {
@@ -105,45 +103,32 @@ const RightSideModal = styled.div`
   } ;
 `
 
-const Modal = () => {
-  const [product, setProduct] = useState([])
-  useEffect(() => {
-    fetch("./gifts.json", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then(res => res.json())
-      .then(res => setProduct(res.data))
-  }, [])
+const Modal = (props) => {
+    
   return (
-    <div>
-      {product.map(item => (
-        <MainModal key={item.id}>
-          <ReservTitle>{item.nome}</ReservTitle>
-          <ModalContent>
-            <ModalGiftPhoto src={item.image}/>
-            <VerticalLine />
-            <RightSideModal>
-              <span style={{ fontSize: 18 }}>
-                Insira seus dados para registrarmos o seu presente para a
-                Charlotte. Ela vai adorar!
-              </span>
-              <form>
-                <InputText>Seu nome</InputText>
-                <InputModal type="text"></InputModal>
-                <InputText>Seu telefone</InputText>
-                <InputModal type="number"></InputModal>
-              </form>
-              <a href={item.link}>
-                <ModalButtonCheck>Comprar</ModalButtonCheck>
-              </a>
-              {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
-            </RightSideModal>
-          </ModalContent>
-        </MainModal>
-      ))}
-    </div>
+    <MainModal>
+      <ReservTitle>Reservar Presente</ReservTitle>
+      <ModalContent>
+        <ModalGiftPhoto src={props.children.image}/>
+        <VerticalLine />
+        <RightSideModal>
+          <span style={{ fontSize: 18 }}>
+            Insira seus dados para registrarmos o seu presente para a Charlotte.
+            Ela vai adorar!
+          </span>
+          <form>
+            <InputText>Seu nome</InputText>
+            <InputModal type="text"></InputModal>
+            <InputText>Seu telefone</InputText>
+            <InputModal type="number"></InputModal>
+          </form>
+          <a href="www.globo.com">
+            <ModalButtonCheck>Comprar</ModalButtonCheck>
+          </a>
+          {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
+        </RightSideModal>
+      </ModalContent>
+    </MainModal>
   )
 }
 

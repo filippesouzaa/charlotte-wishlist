@@ -24,14 +24,10 @@ const StyledModal = Modal.styled`
   overflow: auto
 `
 
-function FancyModalButton() {
+function FancyModalButton(props) {
   
   const [isOpen, setIsOpen] = useState(false)
   const [opacity, setOpacity] = useState(0)
-
-  function Abriu(){
-    console.log('Abriu modal')
-  }
 
   function toggleModal(e) {
     setIsOpen(!isOpen)
@@ -64,7 +60,7 @@ function FancyModalButton() {
         opacity={opacity}
         backgroundProps={{ opacity }}
       >
-        <GiftModalContent />
+        <GiftModalContent>{props.children}</GiftModalContent>
       </StyledModal>
     </div>
   )
@@ -98,7 +94,7 @@ const GiftObject = () => {
               <Lines />
               <GiftPrice>BRL {item.preco}</GiftPrice>
               <ModalProvider backgroundComponent={FadingBackground}>
-                <FancyModalButton/>
+                <FancyModalButton>{item}</FancyModalButton>
               </ModalProvider>
             </GiftSection>
           </GiftDescription>
