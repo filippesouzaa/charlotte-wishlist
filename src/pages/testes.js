@@ -22,10 +22,13 @@ const Testes = () => {
               <b>Nome:</b> {item.nome}
             </p>
             <p>
-              <b>Criador:</b> {item.preco}
+              <b>Preco:</b> {item.preco}
             </p>
             <p>
-              <b>Ano de criação:</b> {item.link}
+              <b>Image:</b> {item.image}
+            </p>
+            <p>
+              <b>Link:</b> {item.link}
             </p>
           </li>
         ))}

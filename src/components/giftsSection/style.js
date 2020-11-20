@@ -8,14 +8,9 @@ export const MainDiv = styled.div`
     text-align: center;
   } ;
 `
-export const GiftPhotos = styled.div`
-  background-color: red;
+export const GiftPhotos = styled.img`
   width: 50%;
   height: 600px;
-  -webkit-background-size: 100% 100% !important;
-  -moz-background-size: 100% 100% !important;
-  -o-background-size: 100% 100% !important;
-  background-size: 100% !important;
   @media (max-width: 768px) {
     width: 100%;
   } ;
