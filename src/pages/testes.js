@@ -1,37 +1,19 @@
 import React, { useState, useEffect } from "react"
 
-const Testes = () => {
-  const [product, setProduct] = useState([])
-  useEffect(() => {
-    fetch("./gifts.json", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then(res => res.json())
-      .then(res => setProduct(res.data))
-  }, [])
+import "./teste.css"
 
+const Testes = () => {
   return (
     <div>
-      <h1>Lista de linguagens</h1>
-      <ul>
-        {product.map(item => (
-          <li key={item.id}>
-            <p>
-              <b>Nome:</b> {item.nome}
-            </p>
-            <p>
-              <b>Preco:</b> {item.preco}
-            </p>
-            <p>
-              <b>Image:</b> {item.image}
-            </p>
-            <p>
-              <b>Link:</b> {item.link}
-            </p>
-          </li>
-        ))}
+      <ul class="styled-list">
+        <li>Conteudo</li>
+        <li>Foto</li>
+        <li>Conteudo</li>
+        <li>Foto</li>
+        <li>List Item 5</li>
+        <li>List Item 6</li>
+        <li>List Item 7</li>
+        <li>List Item 8</li>
       </ul>
     </div>
   )

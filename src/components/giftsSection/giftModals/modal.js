@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
+import { useForm } from "react-hook-form"
 
 const ModalContent = styled.div`
   display: flex;
@@ -103,29 +104,40 @@ const RightSideModal = styled.div`
   } ;
 `
 
-const Modal = (props) => {
-    
+const Modal = props => {
+  const { register, handleSubmit, watch, errors } = useForm()
+  const onSubmit = data => console.log(data)
+
   return (
     <MainModal>
       <ReservTitle>Reservar Presente</ReservTitle>
       <ModalContent>
-        <ModalGiftPhoto src={props.children.image}/>
+        <ModalGiftPhoto src={props.children.image} />
         <VerticalLine />
         <RightSideModal>
           <span style={{ fontSize: 18 }}>
             Insira seus dados para registrarmos o seu presente para a Charlotte.
             Ela vai adorar!
           </span>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <InputText>Seu nome</InputText>
-            <InputModal type="text"></InputModal>
+            <InputModal
+              name="nameRequired"
+              ref={register({ required: true })}
+            ></InputModal>
+            {errors.nameRequired && <span>Este é um campo obrigatório</span>}
             <InputText>Seu telefone</InputText>
-            <InputModal type="number"></InputModal>
+            <InputModal
+              name="phoneRequired"
+              ref={register({ required: true })}
+              type="number"
+            ></InputModal>
+            {/* <a href={props.children.link}> */}
+            {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
+            <ModalButtonCheck type="submit">Comprar</ModalButtonCheck>
+            {/* </a> */}
+            {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
           </form>
-          <a href="www.globo.com">
-            <ModalButtonCheck>Comprar</ModalButtonCheck>
-          </a>
-          {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
         </RightSideModal>
       </ModalContent>
     </MainModal>

@@ -25,14 +25,11 @@ const StyledModal = Modal.styled`
 `
 
 function FancyModalButton(props) {
-  
   const [isOpen, setIsOpen] = useState(false)
   const [opacity, setOpacity] = useState(0)
 
   function toggleModal(e) {
     setIsOpen(!isOpen)
-    console.log('Clicou no button')
-
   }
 
   function afterOpen() {
@@ -70,16 +67,12 @@ const FadingBackground = styled(BaseModalBackground)`
   opacity: ${props => props.opacity};
   transition: opacity ease 200ms;
 `
-
+const API = "./gifts.json"
 
 const GiftObject = () => {
   const [product, setProduct] = useState([])
   useEffect(() => {
-    fetch("./gifts.json", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
+    fetch(API)
       .then(res => res.json())
       .then(res => setProduct(res.data))
   }, [])

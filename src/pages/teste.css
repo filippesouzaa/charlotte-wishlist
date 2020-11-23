@@ -1,0 +1,32 @@
+.styled-list {
+    list-style: none;
+    max-width: 200px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .styled-list li {
+    position: relative;
+    padding-left: 10px;
+    float: left;
+  }
+  .styled-list li:before {
+    border-radius: 100%;
+    position: absolute;
+    background: #000;
+    content: '';
+    height: 5px;
+    width: 5px;
+    top: 6px;
+    left: 0;
+  }
+  .styled-list li:nth-child(even) {
+    padding-right: 10px;
+    text-align: right;
+    padding-left: 0;
+    float: right;
+  }
+  .styled-list li:nth-child(even):before {
+    left: auto;
+    right: 0;
+  }
