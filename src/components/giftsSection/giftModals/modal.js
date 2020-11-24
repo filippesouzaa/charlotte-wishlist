@@ -132,10 +132,10 @@ const Modal = props => {
               ref={register({ required: true })}
               type="number"
             ></InputModal>
-            {/* <a href={props.children.link}> */}
+            <a href={props.children.link}>
             {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
-            <ModalButtonCheck type="submit">Comprar</ModalButtonCheck>
-            {/* </a> */}
+            <ModalButtonCheck type="submit">Comprar {console.log()}</ModalButtonCheck>
+            </a>
             {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
           </form>
         </RightSideModal>

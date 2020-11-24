@@ -1,21 +1,43 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
-import "./teste.css"
+class List extends React.Component {
+  state = {
+    linguagens: [],
+  }
 
-const Testes = () => {
-  return (
-    <div>
-      <ul class="styled-list">
-        <li>Conteudo</li>
-        <li>Foto</li>
-        <li>Conteudo</li>
-        <li>Foto</li>
-        <li>List Item 5</li>
-        <li>List Item 6</li>
-        <li>List Item 7</li>
-        <li>List Item 8</li>
-      </ul>
-    </div>
-  )
+  componentDidMount() {
+    fetch("http://localhost:8080/")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          linguagens: res,
+        })
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Lista de linguagens</h1>
+
+        <ul>
+          {this.state.linguagens.map(item => (
+            <li key={item.id}>
+              <p>
+                <b>Nome:</b> {item.name}
+              </p>
+              <p>
+                <b>Criador:</b> {item.price}
+              </p>
+              <p>
+                <b>Ano de criação:</b> {item.link}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 }
-export default Testes
+
+export default List

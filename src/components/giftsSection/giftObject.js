@@ -67,14 +67,14 @@ const FadingBackground = styled(BaseModalBackground)`
   opacity: ${props => props.opacity};
   transition: opacity ease 200ms;
 `
-const API = "./gifts.json"
+const API = "http://localhost:8080/"
 
 const GiftObject = () => {
   const [product, setProduct] = useState([])
   useEffect(() => {
     fetch(API)
       .then(res => res.json())
-      .then(res => setProduct(res.data))
+      .then(res => setProduct(res))
   }, [])
   return (
     <div>
@@ -83,9 +83,9 @@ const GiftObject = () => {
           <GiftPhotos src={item.image} />
           <GiftDescription>
             <GiftSection>
-              <GiftTitle>{item.nome}</GiftTitle>
+              <GiftTitle>{item.name}</GiftTitle>
               <Lines />
-              <GiftPrice>BRL {item.preco}</GiftPrice>
+              <GiftPrice>BRL {item.price}</GiftPrice>
               <ModalProvider backgroundComponent={FadingBackground}>
                 <FancyModalButton>{item}</FancyModalButton>
               </ModalProvider>
