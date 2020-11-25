@@ -27,6 +27,8 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.11.5",
     "react-image-lightbox": "^5.1.1",
+    "react-promise-tracker": "^2.1.0",
+    "react-scroll": "^1.8.1",
     "styled-components": "^5.2.1",
     "styled-react-modal": "^2.0.1"
   },

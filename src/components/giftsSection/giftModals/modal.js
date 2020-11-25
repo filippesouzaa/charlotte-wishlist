@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { useForm } from "react-hook-form"
+import GiftConfirm from "./giftConfirm"
 
 const ModalContent = styled.div`
   display: flex;
@@ -50,23 +51,7 @@ const InputText = styled.p`
   font-weight: bold;
 `
 
-// const ModalButtonGiveUp = styled.button`
-//   margin-top: 10px;
-//   padding: 20px 50px;
-//   width: 100%;
-//   border: 3px solid #31383a;
-//   text-transform: uppercase;
-//   background-color: #ffff;
-//   transition: 0.4s;
-//   outline: none;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: #f15050;
-//     border: 3px solid #f15050;
-//   }
-// `
-
-const ModalButtonCheck = styled.button`
+const ModalButtonCheck = styled.input`
   margin-top: 20px;
   padding: 20px 50px;
   width: 100%;
@@ -106,7 +91,10 @@ const RightSideModal = styled.div`
 
 const Modal = props => {
   const { register, handleSubmit, errors } = useForm()
+  const [showResults, setShowResults] = useState(false)
+
   const onSubmit = data => console.log(data)
+  const onClick = () => setShowResults(true)
 
   return (
     <MainModal>
@@ -132,12 +120,17 @@ const Modal = props => {
               ref={register({ required: true })}
               type="number"
             ></InputModal>
-            <a href={props.children.link}>
             {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
-            <ModalButtonCheck type="submit">Comprar {console.log()}</ModalButtonCheck>
-            </a>
-            {/* <ModalButtonGiveUp onClick={toggleModal}>Desistir</ModalButtonGiveUp> */}
+
+            <div>
+              <ModalButtonCheck
+                type="submit"
+                value="RESERVAR"
+                onClick={onClick}
+              ></ModalButtonCheck>
+            </div>
           </form>
+          {showResults ? <GiftConfirm /> : null}
         </RightSideModal>
       </ModalContent>
     </MainModal>
