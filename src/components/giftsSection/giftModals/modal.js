@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { useForm } from "react-hook-form"
 
@@ -50,21 +50,21 @@ const InputText = styled.p`
   font-weight: bold;
 `
 
-const ModalButtonGiveUp = styled.button`
-  margin-top: 10px;
-  padding: 20px 50px;
-  width: 100%;
-  border: 3px solid #31383a;
-  text-transform: uppercase;
-  background-color: #ffff;
-  transition: 0.4s;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #f15050;
-    border: 3px solid #f15050;
-  }
-`
+// const ModalButtonGiveUp = styled.button`
+//   margin-top: 10px;
+//   padding: 20px 50px;
+//   width: 100%;
+//   border: 3px solid #31383a;
+//   text-transform: uppercase;
+//   background-color: #ffff;
+//   transition: 0.4s;
+//   outline: none;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #f15050;
+//     border: 3px solid #f15050;
+//   }
+// `
 
 const ModalButtonCheck = styled.button`
   margin-top: 20px;
@@ -105,7 +105,7 @@ const RightSideModal = styled.div`
 `
 
 const Modal = props => {
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => console.log(data)
 
   return (
