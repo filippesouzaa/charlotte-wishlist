@@ -99,11 +99,17 @@ const Modal = props => {
   const [avaible, setAvaible] = useState(false)
 
   function onSubmit(data) {
-    console.log(data)
     setDisabled(!disabled)
     setAvaible(!avaible)
-    api.post("/users", data)
+    api.post("/users", {
+      name: data.name,
+      phone: data.phone,
+      link: props.children.link,
+    })
+
+    api.delete(`/gifts/${props.children._id}`)
   }
+
   const onClick = () => {
     if (name !== "" && phone !== "") {
       setShowResults(true)
@@ -138,15 +144,6 @@ const Modal = props => {
               disabled={disabled}
               value={phone}
               onChange={e => setPhone(e.target.value)}
-            ></InputModal>
-            <InputModal
-              name="link"
-              ref={register({ required: true })}
-              type="text"
-              disabled={disabled}
-              value={props.children.link}
-              onChange={e => setPhone(e.target.value)}
-              style={{ display: "none" }}
             ></InputModal>
             {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
             <ModalButtonCheck

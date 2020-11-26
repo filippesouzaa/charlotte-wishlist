@@ -74,7 +74,9 @@ const GiftObject = () => {
   useEffect(() => {
     fetch(API)
       .then(res => res.json())
-      .then(res => setProduct(res))
+      .then(res => {
+        setProduct(res)
+      })
   }, [])
   return (
     <div>

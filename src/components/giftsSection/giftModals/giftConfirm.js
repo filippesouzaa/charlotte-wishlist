@@ -22,8 +22,9 @@ const giftConfirm = props => {
       <a target="_blank" rel="noreferrer" href={props.children}>
         <ModalButtonGiveUp type="submit">COMPRAR</ModalButtonGiveUp>
       </a>
-      <span>Produto reservado! Clique no botão acima para realizar a compra.</span>
-
+      <span>
+        Produto reservado! Clique no botão acima para realizar a compra.
+      </span>
     </div>
   )
 }
