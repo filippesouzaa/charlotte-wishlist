@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { useForm } from "react-hook-form"
 import GiftConfirm from "./giftConfirm"
+import api from "../../../services/api"
 
 const ModalContent = styled.div`
   display: flex;
@@ -91,11 +92,23 @@ const RightSideModal = styled.div`
 
 const Modal = props => {
   const { register, handleSubmit, errors } = useForm()
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
   const [showResults, setShowResults] = useState(false)
+  const [disabled, setDisabled] = useState(false)
+  const [avaible, setAvaible] = useState(false)
 
-  const onSubmit = data => console.log(data)
-  const onClick = () => setShowResults(true)
-
+  function onSubmit(data) {
+    console.log(data)
+    setDisabled(!disabled)
+    setAvaible(!avaible)
+    api.post("/users", data)
+  }
+  const onClick = () => {
+    if (name !== "" && phone !== "") {
+      setShowResults(true)
+    }
+  }
   return (
     <MainModal>
       <ReservTitle>Reservar Presente</ReservTitle>
@@ -110,27 +123,33 @@ const Modal = props => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <InputText>Seu nome</InputText>
             <InputModal
-              name="nameRequired"
+              name="name"
               ref={register({ required: true })}
+              disabled={disabled}
+              value={name}
+              onChange={e => setName(e.target.value)}
             ></InputModal>
             {errors.nameRequired && <span>Este é um campo obrigatório</span>}
             <InputText>Seu telefone</InputText>
             <InputModal
-              name="phoneRequired"
+              name="phone"
               ref={register({ required: true })}
               type="number"
+              disabled={disabled}
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
             ></InputModal>
             {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
-
-            <div>
-              <ModalButtonCheck
-                type="submit"
-                value="RESERVAR"
-                onClick={onClick}
-              ></ModalButtonCheck>
-            </div>
+            <ModalButtonCheck
+              type="submit"
+              value="RESERVAR"
+              onClick={onClick}
+              disabled={avaible}
+            />
           </form>
-          {showResults ? <GiftConfirm /> : null}
+          {showResults ? (
+            <GiftConfirm>{props.children.link}</GiftConfirm>
+          ) : null}
         </RightSideModal>
       </ModalContent>
     </MainModal>

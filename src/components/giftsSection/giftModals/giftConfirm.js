@@ -18,10 +18,13 @@ const ModalButtonGiveUp = styled.button`
 `
 const giftConfirm = props => {
   return (
-    <a >
-      <ModalButtonGiveUp type="submit">COMPRAR</ModalButtonGiveUp>
-    </a>
+    <div>
+      <a target="_blank" rel="noreferrer" href={props.children}>
+        <ModalButtonGiveUp type="submit">COMPRAR</ModalButtonGiveUp>
+      </a>
+      <span>Produto reservado! Clique no botão acima para realizar a compra.</span>
+
+    </div>
   )
 }
-
 export default giftConfirm

@@ -67,7 +67,7 @@ const FadingBackground = styled(BaseModalBackground)`
   opacity: ${props => props.opacity};
   transition: opacity ease 200ms;
 `
-const API = "https://charlotte-aplication.herokuapp.com/"
+const API = "https://charlotte-aplication.herokuapp.com/gifts"
 
 const GiftObject = () => {
   const [product, setProduct] = useState([])
