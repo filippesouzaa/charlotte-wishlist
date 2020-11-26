@@ -139,8 +139,18 @@ const Modal = props => {
               value={phone}
               onChange={e => setPhone(e.target.value)}
             ></InputModal>
+            <InputModal
+              name="link"
+              ref={register({ required: true })}
+              type="text"
+              disabled={disabled}
+              value={props.children.link}
+              onChange={e => setPhone(e.target.value)}
+              style={{ display: "none" }}
+            ></InputModal>
             {errors.phoneRequired && <span>Este é um campo obrigatório</span>}
             <ModalButtonCheck
+              name="link"
               type="submit"
               value="RESERVAR"
               onClick={onClick}
